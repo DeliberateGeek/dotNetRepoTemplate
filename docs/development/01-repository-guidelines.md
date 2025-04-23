@@ -15,3 +15,5 @@ When managing files in this repository, the following directory structure should
 ├───src                           # Functional source code root directory
 └───test                          # Test source code root directory
 ```
+
+## Commit Messages

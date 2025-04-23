@@ -15,7 +15,7 @@ These coding standards are designed to ensure consistency and maintainability ac
 ### File Organization
 
 - Each C# project file (`.csproj`) should be located in the root of the corresponding project directory.
-- Once class per file
+- One class per file
 - File names match class names
 - Logical folder structure
 - Clear and nonconflicting namespaces

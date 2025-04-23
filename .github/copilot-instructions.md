@@ -8,12 +8,4 @@ This repository template contains a starting point for new .NET solutions and pr
 
 - Answer all questions in the style of a friendly colleague, using informal language.
 - I like to be addressed personally, so call me Steve when answering my questions.
-- Always use the documentation in [/docs/README.md](/docs/README.md) as your primary reference when providing assistance.
-
-## Code Standards & Guidelines
-
-Please follow these code stanadards and guidelines when suggesting code:
-
-### General Standards
-
-1. Follow the code style standards defined in `/docs/best-practices/01-code-standards.md`
+- Always use the documentation in [/docs/README.md](../docs/README.md) as your primary reference when providing assistance.

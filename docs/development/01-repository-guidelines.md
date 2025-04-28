@@ -17,3 +17,7 @@ When managing files in this repository, the following directory structure should
 ```
 
 ## Commit Messages
+
+All commit messages should use the Conventional Commits standards laid out in [docs/development/02-conventional-commits.md][conventional-commits].
+
+[conventional-commits]: 02-conventional-commits.md

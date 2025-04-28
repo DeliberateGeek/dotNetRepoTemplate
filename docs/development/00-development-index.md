@@ -4,7 +4,10 @@ This index provides a comprehensive overview of all development documentation
 
 ## Development Documents
 
-- [Repository Guidelines](01-repository-guidelines.md)
-- [Code Standards](02-code-standards.md)
-- [Security Guidelines](03-security-guidelines.md)
-- [Performance Guidelines](04-performance-guidelines.md)
+- [Repository Guidelines][repository-guidelines]
+- [Commit Message Guidelines][conv-commits]
+- [General Code Guidelines][general-code-guidelines]
+
+[repository-guidelines]: /docs/development/01-repository-guidelines.md
+[general-code-guidelines]: /docs/development/03-general-code-guidelines.md
+[conv-commits]: /docs/development/02-conventional-commits.md

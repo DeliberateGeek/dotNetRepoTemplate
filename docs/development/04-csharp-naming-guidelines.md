@@ -29,7 +29,7 @@ In addition to the rules enforced by the compiler, this project adopts the follo
   - `enum`
   - member
   - variable
-  - paramter
+  - parameter
   - type parameter (e.g. `List<T>`, `<TSession>`)
   - namespace
 - While the compiler does not enforce these rules, these guidelines provide consistency and clarity in naming.identifiers.

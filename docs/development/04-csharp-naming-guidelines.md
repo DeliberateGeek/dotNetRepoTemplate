@@ -58,7 +58,7 @@ Use PascalCase for the following identifiers.
 
 - #### `Record`
 
-  In addittion to the record name, positional parameters of the record should also be named using PascalCase as they are public properties of the record.
+  In addition to the record name, positional parameters of the record should also be named using PascalCase as they are public properties of the record.
 
   ```csharp
   public record PhysicalAddress(

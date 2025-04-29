@@ -32,8 +32,7 @@ In addition to the rules enforced by the compiler, this project adopts the follo
   - parameter
   - type parameter (e.g. `List<T>`, `<TSession>`)
   - namespace
-- While the compiler does not enforce these rules, these guidelines provide consistency and clarity in naming.identifiers.
-- Identifier names should not match C# reserved keywords, unless absolutely necessary for clarity.
+- While the compiler does not enforce these rules, these guidelines provide consistency and clarity in naming identifiers.
 - This project will one contain or more `editor.config` files that will help enforce these guidelines.
 
 ### ***Readable and Descriptive***

@@ -176,8 +176,7 @@ Use PascalCase for the following identifiers.
 
 ### ***camelCase***
 
-Use camelCasefor the following identifiers.
-
+Use camelCase for the following identifiers.
 - #### `Private` or `Internal` fields
 
   When naming `private` or `internal` fields use camel case. In addition, prefix the name with an underscore (`_`).

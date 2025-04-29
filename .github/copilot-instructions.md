@@ -22,8 +22,7 @@ Follow the guidelins outlined in the follwing documents for structuring and mana
 ### C# Coding Guidelines
 
 - Follow the general coding guidelines outlined in [docs/development/03-general-code-guidelines.md][code-guidelines]
-
-- Follow C# naming guidelines outlined in [docs/development/03-general-code-guidelines.md][csharp-naming-guidelines]
+- Follow C# naming guidelines outlined in [docs/development/04-csharp-naming-guidelines.md][csharp-naming-guidelines]
 
 [repo-guidelines]: /docs/development/01-repository-guidelines.md
 [conv-commits]: /docs/development/02-conventional-commits.md

@@ -59,9 +59,10 @@ Use PascalCase for the following identifiers.
 
 - #### `Record`
 
-  In addittion to the record name, positional parameters of the record should also be named using PascalCase as they are public properties of the record.
+  In addittion to the record name, primary constructor/positional parameters of the record type should also be named using PascalCase as they are public properties of the record.
 
   ```csharp
+  // Positional Parameters
   public record PhysicalAddress(
       string Street,
       string City,
@@ -204,6 +205,10 @@ Use camelCasefor the following identifiers.
   }
   ```
 
+- #### Primary Constructor Paramaters on `class` and `struct` Types
+
+  See [Declare primary constructors for classes and structs][primary-const-class-struct] for details on using primary constructors for `class` and `struct` types.
+
 ### ***ALL_CAPS***
 
 - Use ALL_CAPS with an underscore (`_`) between words when naming constant identifiers, regardless of scope.
@@ -228,3 +233,4 @@ Use camelCasefor the following identifiers.
 
 [identifier-naming]: https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
 [idesign-csharp-standard]: https://www.idesign.net/Resources/Standards
+[primary-const-class-struct]: https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/primary-constructors

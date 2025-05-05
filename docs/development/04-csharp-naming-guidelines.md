@@ -203,7 +203,7 @@ Use camelCase for the following identifiers.
   }
   ```
 
-- #### Primary Constructor Paramaters on `class` and `struct` Types
+- #### Primary Constructor Parameters on `class` and `struct` Types
 
   See [Declare primary constructors for classes and structs][primary-const-class-struct] for details on using primary constructors for `class` and `struct` types.
 

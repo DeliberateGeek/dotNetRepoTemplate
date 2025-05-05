@@ -35,8 +35,6 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
 
 - Utilize modern language features and C# versions whenever possible.
 - Avoid outdated language constructs.
-- Only catch exceptions that can be properly handled; avoid catching general exceptions. For example, code shouldn't catch the System.Exception type without an exception filter.
-- Use specific exception types to provide meaningful error messages.
 - Use LINQ queries and methods for collection manipulation to improve code readability.
 - Use asynchronous programming with async and await for I/O-bound operations.
 - Be cautious of deadlocks and use Task.ConfigureAwait when appropriate.
@@ -88,6 +86,9 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
   // The following declaration creates a query. It does not run
   // the query.
   ```
+
+- Avoid comments that explain the obvious. Code should be selfexplanatory. Good code with readable variables and method names should not require comments.
+- Comments should generally describe *why* code is written as it is, not *what* the code does. Examples of the kinds of things to document with comments include operational assumptions and algorithm insights.
 
 - If your code is accessible outside the current solution (e.g. API or Class Library), use [XML comments][xml-comments] for describing methods, classes, fields, and all public members. See [Recommended XML tags for C# documentation comments][xml-recommended-tags] for detailed XML tag recommendations.
 
@@ -206,21 +207,69 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
   exampleDel2("Hey");
   ```
 
-### `try-catch` in Exception Handling Guidelines
+### Exception Handling Guidelines
 
+- Only catch exceptions for which you have explicit handling.
 - Use a try-catch statement for most exception handling.
+- If a catch statement throws an exception, always rethrow the original exception (or another exception constructed from the original exception) to maintain the stack location of the original error.
 
   ```csharp
-  static double ComputeDistance(double x1, double y1, double x2, double y2)
+  using System;
+  using System.IO;
+  using System.Data.SqlClient;
+  
+  public class DataProcessor
   {
-      try
+      public string ProcessFile(string filePath)
       {
-          return Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+          try
+          {
+              // Attempt to read from file
+              string content = File.ReadAllText(filePath);
+              return ProcessContent(content);
+          }
+          catch (FileNotFoundException ex)
+          {
+              // Explicit handling for missing file
+              Console.WriteLine($"File not found: {filePath}");
+              return string.Empty;
+          }
+          catch (SqlException ex) when (ex.Number == 4060)
+          {
+              // Explicit handling for database access issue
+              try
+              {
+                  LogDatabaseFailure(ex);
+                  return "Database unavailable";
+              }
+              catch (Exception loggingEx)
+              {
+                  // Rethrow the original exception to preserve the stack trace
+                  // by passing it as inner exception
+                  throw new ApplicationException("Failed while handling database error", ex);
+              }
+          }
+          catch (UnauthorizedAccessException ex)
+          {
+              // Example of simple rethrowing - preserves original stack trace
+              Console.WriteLine("Permission error detected");
+              throw; // Use naked "throw" to preserve the original stack trace
+          }
+          // We don't catch IOException or other exceptions - they'll propagate up
       }
-      catch (System.ArithmeticException ex)
+  
+      private string ProcessContent(string content)
       {
-          Console.WriteLine($"Arithmetic overflow or underflow: {ex}");
-          throw;
+          return content.ToUpper();
+      }
+  
+      private void LogDatabaseFailure(Exception ex)
+      {
+          // Simulate logging that might fail
+          if (DateTime.Now.Second % 2 == 0) // Arbitrary condition to simulate failure
+              throw new IOException("Log storage unavailable");
+              
+          Console.WriteLine($"Logged error: {ex.Message}");
       }
   }
   ```

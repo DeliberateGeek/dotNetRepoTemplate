@@ -46,6 +46,7 @@ The following list is intended to be a primary starting point for approved types
 | DOCS | Changes only to documentation |
 | FEAT | Denotes a new feature additon |
 | FIX | Denotes a bug fix |
+| MERGE | Denotes a merge commit |
 | PERF | A code change that improves performance |
 | REFACTOR | A code change that neither fixes a bu0g nor adds a feature |
 | STYLE | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) |

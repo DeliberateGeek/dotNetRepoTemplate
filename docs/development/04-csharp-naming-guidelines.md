@@ -33,7 +33,7 @@ In addition to the rules enforced by the compiler, this project adopts the follo
   - type parameter (e.g. `List<T>`, `<TSession>`)
   - namespace
 - While the compiler does not enforce these rules, these guidelines provide consistency and clarity in naming identifiers.
-- This project will one contain or more `editor.config` files that will help enforce these guidelines.
+- This project will contain one or more `editor.config` files that will help enforce these guidelines.
 
 ### ***Readable and Descriptive***
 
@@ -58,9 +58,10 @@ Use PascalCase for the following identifiers.
 
 - #### `Record`
 
-  In addition to the record name, positional parameters of the record should also be named using PascalCase as they are public properties of the record.
+  In addition to the record name, primary constructor/positional parameters of the record type should also be named using PascalCase as they are public properties of the record.
 
   ```csharp
+  // Positional Parameters
   public record PhysicalAddress(
       string Street,
       string City,
@@ -202,6 +203,10 @@ Use camelCase for the following identifiers.
   }
   ```
 
+- #### Primary Constructor Parameters on `class` and `struct` Types
+
+  See [Declare primary constructors for classes and structs][primary-const-class-struct] for details on using primary constructors for `class` and `struct` types.
+
 ### ***ALL_CAPS***
 
 - Use ALL_CAPS with an underscore (`_`) between words when naming constant identifiers, regardless of scope.
@@ -221,8 +226,9 @@ Use camelCase for the following identifiers.
 
 ### ***Acronyms***
 
-- Use pascal case for acronyms longer than two charactors (e.g., `XmlParser`, not `XMLParser`).
+- Use pascal case for acronyms longer than two characters (e.g., `XmlParser`, not `XMLParser`).
 - Use all uppercase for two-character acronyms (e.g. `IOStream`).
 
 [identifier-naming]: https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
 [idesign-csharp-standard]: https://www.idesign.net/Resources/Standards
+[primary-const-class-struct]: https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/primary-constructors

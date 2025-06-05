@@ -125,22 +125,22 @@ end_of_line = crlf
 #            to none, "Hidden" corresponds to silent, and "Info" corresponds to suggestion.              #
 # https://github.com/dotnet/roslyn-analyzers/blob/main/src/NetAnalyzers/Core/AnalyzerReleases.Shipped.md #
 ##########################################################################################################
-# When you would like to change the severity of a specific rule, you can do so by adding a line in the #
-# appropriate section below. The format is: dotnet_diagnostic.<rule-id>.severity = <severity>          #
-# For example, to set the severity of the rule CA1000 to suggestion, you would add the line:           #
-# dotnet_diagnostic.CA1000.severity = suggestion                                                       #
-#------------------------------------------------------------------------------------------------------#
-# The rule ID is the same as the rule ID in the .NET Code Analysis documentation.                      #
-#------------------------------------------------------------------------------------------------------#
-# When a named rule (e.g. csharp_prefer_system_threading_lock) is set to a severity other than the     #
-# default defined below, the corresponding diagnostic ID should also be set to the same severity.      #
-#
-# For example, if you set csharp_prefer_system_threading_lock to suggestion, you should also set the   #
-# diagnostic ID dotnet_diagnostic.IDE0330 to suggestion. This is because the named rule is a shorthand #
-# for the diagnostic ID, used by the IDE. If you do not set the diagnostic ID, then only the IDE will  #
-# apply the severity, but command line tools like `dotnet build` or `dotnet test` as well as           #
-# static analysis tools like SonarQube will not.                                                       #
-########################################################################################################
+# When you would like to change the severity of a specific rule, you can do so by adding a line in the   #
+# appropriate section below. The format is: dotnet_diagnostic.<rule-id>.severity = <severity>            #
+# For example, to set the severity of the rule CA1000 to suggestion, you would add the line:             #
+# dotnet_diagnostic.CA1000.severity = suggestion                                                         #
+#--------------------------------------------------------------------------------------------------------#
+# The rule ID is the same as the rule ID in the .NET Code Analysis documentation.                        #
+#--------------------------------------------------------------------------------------------------------#
+# When a named rule (e.g. csharp_prefer_system_threading_lock) is set to a severity other than the       #
+# default defined below, the corresponding diagnostic ID should also be set to the same severity.        #
+#--------------------------------------------------------------------------------------------------------#
+# For example, if you set csharp_prefer_system_threading_lock to suggestion, you should also set the     #
+# diagnostic ID dotnet_diagnostic.IDE0330 to suggestion. This is because the named rule is a shorthand   #
+# for the diagnostic ID, used by the IDE. If you do not set the diagnostic ID, then only the IDE will    #
+# apply the severity, but command line tools like `dotnet build` or `dotnet test` as well as             #
+# static analysis tools like SonarQube will not.                                                         #
+##########################################################################################################
 dotnet_analyzer_diagnostic.severity = warning
 
 ##############################################################################################
@@ -217,9 +217,8 @@ csharp_style_expression_bodied_local_functions = true
 # General .NET style rules #
 ############################
 dotnet_style_object_initializer = true
-dotnet_style_collection_initializer = true:suggestion
-dotnet_style_prefer_collection_expression = true:suggestion
-dotnet_diagnostic.IDE0028.severity = suggestion
+dotnet_style_collection_initializer = true
+dotnet_style_prefer_collection_expression = true
 dotnet_style_coalesce_expression = true
 dotnet_style_null_propagation = true
 dotnet_style_prefer_auto_properties = true
@@ -246,6 +245,25 @@ dotnet_diagnostic.IDE0130.severity = suggestion
 csharp_style_throw_expression = true
 csharp_style_inlined_variable_declaration = true
 csharp_prefer_simple_default_expression = true
+csharp_style_prefer_local_over_anonymous_function = true
+csharp_style_deconstructed_variable_declaration = true
+csharp_style_prefer_index_operator = true
+csharp_style_prefer_range_operator = true
+csharp_style_implicit_object_creation_when_type_is_apparent = true
+csharp_style_prefer_null_check_over_type_check = true
+csharp_style_prefer_tuple_swap = true
+dotnet_style_prefer_foreach_explicit_cast_in_source = when_strongly_typed
+csharp_style_prefer_utf8_string_literals = true
+csharp_style_prefer_unbound_generic_type_in_nameof = true
+csharp_style_prefer_implicitly_typed_lambda_expressions = true
+
+####################################################################################################################
+# Field prefernces                                                                                                 #
+#------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#field-preferences #
+####################################################################################################################
+
+dotnet_style_readonly_field = true
 
 # "this." and "Me." qualifiers
 dotnet_style_qualification_for_field = true
@@ -259,19 +277,12 @@ dotnet_style_predefined_type_for_member_access = true
 dotnet_style_require_accessibility_modifiers = always:warning
 csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:warning
 visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:warning
-dotnet_style_readonly_field = true
+
 # Parentheses preferences
 dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
 dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
 dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
 dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
-
-
-# Null-checking preferences
-
-
-
-csharp_style_prefer_null_check_over_type_check = true
 
 # C# Style Rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#c-style-rules
@@ -300,9 +311,9 @@ csharp_style_prefer_not_pattern = true
 
 csharp_style_pattern_local_over_anonymous_function = true
 csharp_style_deconstructed_variable_declaration = true
-csharp_style_prefer_index_operator = true
-csharp_style_prefer_range_operator = true
-csharp_style_implicit_object_creation_when_type_is_apparent = true
+
+
+
 # "Null" checking preferences
 csharp_style_throw_expression = true
 csharp_style_conditional_delegate_call = true
@@ -311,8 +322,7 @@ csharp_style_conditional_delegate_call = true
 
 # Modifier preferences
 csharp_prefer_static_local_function = true
-# Null checking preferences
-csharp_style_prefer_null_check_over_type_check = true
+
 # String handling preferences
 dotnet_style_prefer_interpolated_string_for_concatenation = true:suggestion
 

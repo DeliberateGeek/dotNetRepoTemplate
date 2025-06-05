@@ -181,10 +181,16 @@ dotnet_diagnostic.IDE0073.severity = none
 csharp_prefer_braces = true
 csharp_prefer_simple_using_statement = false
 csharp_style_namespace_declarations = block_scoped
+dotnet_diagnostic.IDE0160.severity = suggestion
+dotnet_diagnostic.IDE0161.severity = suggestion
 csharp_style_prefer_method_group_conversion = true
 csharp_style_prefer_top_level_statements = false:suggestion
+dotnet_diagnostic.IDE0210.severity = suggestion
+dotnet_diagnostic.IDE0211.severity = suggestion
 csharp_style_prefer_primary_constructors = true:suggestion
+dotnet_diagnostic.IDE0290.severity = suggestion
 csharp_prefer_system_threading_lock = true:suggestion
+dotnet_diagnostic.IDE0330.severity = suggestion
 
 ########################################################################################################################
 # Expression-bodied members                                                                                            #

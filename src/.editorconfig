@@ -5,14 +5,15 @@
 # Modified by Steve Brouillard to fit personal preference and the needs of the projects
 # based on this repository.
 
-############################################
-# Core .editorconfig settings              #
-############################################
+###############################
+# Core .editorconfig settings #
+###############################
 
 # This file is the top-most EditorConfig file
 root = true
-
-# All files
+#######################################################################################################################
+# All files                                                                                                           #
+#######################################################################################################################
 [*]
 charset = utf-8
 indent_style = space
@@ -22,82 +23,160 @@ trim_trailing_whitespace = true
 end_of_line = lf
 max_line_length = 120
 
-# Visual Studio Solution Files
-# Set to tab indentation for .sln files.
-# This is a workaround for the fact that Visual Studio does not support
-# setting the indent style for .sln files in the IDE and tooling will
-# not respect the .editorconfig file for .sln files and will reset the
-# indent style to tab when saving the file.
+#######################################################################################################################
+# Visual Studio Solution Files                                                                                        #
+#######################################################################################################################
+# Set to tab indentation for .sln files.                                                                              #
+# This is a workaround for the fact that Visual Studio does not support                                               #
+# setting the indent style for .sln files in the IDE and tooling will                                                 #
+# not respect the .editorconfig file for .sln files and will reset the                                                #
+# indent style to tab when saving the file.                                                                           #
+#######################################################################################################################
 [*.sln]
 indent_style = tab
 
-# Visual Studio XML Project Files. 2 Spaces for .NET projects
-# This ensures that the indentation is consistent with the default
-# settings in Visual Studio for .NET projects.
+#######################################################################################################################
+# Visual Studio XML Project Files. 2 Spaces for .NET projects                                                         #
+#######################################################################################################################
+# This ensures that the indentation is consistent with the default                                                    #
+# settings in Visual Studio for .NET projects.                                                                        #
+#######################################################################################################################
 [*.{csproj,proj,projitems,shproj}]
 indent_size = 2
 
-# XML Configuration Files.
-# This ensures that the indentation is consistent with the default
-# settings for many XML configuration files.
+#######################################################################################################################
+# XML Configuration Files.                                                                                            #
+# This ensures that the indentation is consistent with the default                                                    #
+# settings for many XML configuration files.                                                                          #
+#######################################################################################################################
 [*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
 indent_size = 2
-
-# JSON Files.
-# This ensures that the indentation is consistent with the default
-# settings for many JSON configuration files.
+#######################################################################################################################
+# JSON Files.                                                                                                         #
+# This ensures that the indentation is consistent with the default # settings for many JSON configuration files.      #
+#######################################################################################################################
+# Note: JSON5 and Web Manifest files are also included in this section to ensure consistent formatting. JSON5 is a    #
+#       superset of JSON that allows for comments and trailing commas, and Web Manifest files are used in web         #
+#       applications.                                                                                                 #
+#######################################################################################################################
 [*.{json,json5,webmanifest}]
 indent_size = 2
 
-# YAML Files.
-# This ensures that the indentation is consistent with the 2 space
-# indentation enforced by the YAML specification.
+#######################################################################################################################
+# YAML Files.                                                                                                         #
+# This ensures that the indentation is consistent with the 2 space indentation enforced by the YAML specification.    #
+#######################################################################################################################
 [*.{yml,yaml}]
 indent_size = 2
 
+#######################################################################################################################
+# Markdown Files.                                                                                                     #
+# This ensures that the indentation is consistent with the default settings for Markdown files.                       #
+#######################################################################################################################
+# Note: The `max_line_length` is set to `off` to allow for longer lines in Markdown files, as they often contain      #
+#       formatted text, code blocks, and other elements that may exceed the typical line length.                      #
+#######################################################################################################################
 [*.{md,mkdn,markdown}]
 trim_trailing_whitespace = true
 indent_style = space
 max_line_length = off
 
-# Batch Files
+#######################################################################################################################
+# Batch Files                                                                                                         #
+# This ensures that the end of line style is set to CRLF for batch files, which is the standard for                   #
+# Windows batch scripts.                                                                                              #
+#######################################################################################################################
 [*.{cmd,bat}]
 end_of_line = crlf
 
-############################################################################################
-# Default .NET Code Style Severities                                                       #
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope #
-############################################################################################
+#######################################################################################################################
+# C# code files                                                                                                       #
+# This section applies to C# code files, including C# scripts and Cake build scripts.                                 #
+#######################################################################################################################
+# Note: The bulk of the code-style and diagnostic rues are defined in this section.                                   #
+#       It is organized by the categories defined in the .NET Code Style and Code Quality documentation.              #
+#       https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/                              #
+#       https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/                            #
+#######################################################################################################################
+[*.{cs,csx,cake}]
 
-# Default Severity for all .NET Code Analysis rules.
-# Any rule that does not have a specific severity set will default to this value.
-[*.{cs,csx}]
+##########################################################################################################
+# Default .NET Code Style & Code Quality Severities                                                      #
+# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope               #
+##########################################################################################################
+# This section sets the default severity for all .NET Code Analysis rules. Any rule that does not have a #
+# specific severity set will default to this value. The severity can be overridden for specific rules in #
+# the sections below. The severity levels (per above link documentation) are:                            #
+#--------------------------------------------------------------------------------------------------------#
+# - error: Violations appear as build errors and cause builds to fail.                                   #
+# - warning: Violations appear as build warnings but do not cause builds to fail (unless you have an     #
+#            option set to treat warnings as errors).                                                    #
+# - suggestion: Violations appear as build messages and as suggestions in the Visual Studio IDE.         #
+#               (In Visual Studio, suggestions appear as three gray dots under the first two characters.)#
+# - silent: Violations aren't visible to the user.                                                       #
+#           However, for code-style rules, Visual Studio code-generation features still generate code in #
+#           this style. These rules also participate in cleanup and appear in the                        #
+#           `Quick Actions and Refactorings` menu in Visual Studio.                                      #
+# - none: Rule is suppressed completely.                                                                 #
+#         However, for code-style rules, Visual Studio code-generation features still generate code in   #
+#         this style.                                                                                    #
+# - default: The default severity of the rule is used. The default severities for each .NET release are  #
+#            listed in the roslyn-analyzers repo (see link bewlow). In that table, "Disabled" corresponds#
+#            to none, "Hidden" corresponds to silent, and "Info" corresponds to suggestion.              #
+# https://github.com/dotnet/roslyn-analyzers/blob/main/src/NetAnalyzers/Core/AnalyzerReleases.Shipped.md #
+##########################################################################################################
+# When you would like to change the severity of a specific rule, you can do so by adding a line in the #
+# appropriate section below. The format is: dotnet_diagnostic.<rule-id>.severity = <severity>          #
+# For example, to set the severity of the rule CA1000 to suggestion, you would add the line:           #
+# dotnet_diagnostic.CA1000.severity = suggestion                                                       #
+#------------------------------------------------------------------------------------------------------#
+# The rule ID is the same as the rule ID in the .NET Code Analysis documentation.                      #
+#------------------------------------------------------------------------------------------------------#
+# When a named rule (e.g. csharp_prefer_system_threading_lock) is set to a severity other than the     #
+# default defined below, the corresponding diagnostic ID should also be set to the same severity.      #
+#
+# For example, if you set csharp_prefer_system_threading_lock to suggestion, you should also set the   #
+# diagnostic ID dotnet_diagnostic.IDE0330 to suggestion. This is because the named rule is a shorthand #
+# for the diagnostic ID, used by the IDE. If you do not set the diagnostic ID, then only the IDE will  #
+# apply the severity, but command line tools like `dotnet build` or `dotnet test` as well as           #
+# static analysis tools like SonarQube will not.                                                       #
+########################################################################################################
 dotnet_analyzer_diagnostic.severity = warning
 
-####################################################################################
-# Code Style rules for .NET.                                                       #
-# Organized by the categories defined below                                        #
-# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ #
-####################################################################################
+##############################################################################################
+# Code-style rules for .NET (C#).                                                            #
+# This repository is focused on the C# language. There are no VB specific rules defined.     #
+##############################################################################################
+# These rules are organized by the categories defined in the Code-style rules documentation. #
+# See the link below for the documentation. Look at the navigation pane on the left for      #
+# the categories.                                                                            #
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/           #
+##############################################################################################
 
 #############################################################################################################
-# Language and unnecessary rules                                                                            #
+# Code-style rules - Language and unnecessary rules.                                                        #
+#-----------------------------------------------------------------------------------------------------------#
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules                   #
 #############################################################################################################
-# Organized by the categories defined in the Rule Index                                                     #
+# This section is further organized by the sub-categories defined in the rule index:                        #
+#-----------------------------------------------------------------------------------------------------------#
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#rule-index #
 #############################################################################################################
 
-###############################
-# Using directive preferences #
-###############################
+##############################################################################################################################
+# Using directive preferences                                                                                                #
+#----------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#using-directive-preferences #
+##############################################################################################################################
 csharp_using_directive_placement = outside_namespace
 # Do not require a file header
 dotnet_diagnostic.IDE0073.severity = none
 
-##########################
-# Code block preferences #
-##########################
+#########################################################################################################################
+# Code block preferences                                                                                                #
+#-----------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#code-block-preferences #
+#########################################################################################################################
 
 csharp_prefer_braces = true
 csharp_prefer_simple_using_statement = false
@@ -107,9 +186,11 @@ csharp_style_prefer_top_level_statements = false:suggestion
 csharp_style_prefer_primary_constructors = true:suggestion
 csharp_prefer_system_threading_lock = true:suggestion
 
-#############################
-# Expression-bodied members #
-#############################
+########################################################################################################################
+# Expression-bodied members                                                                                            #
+#----------------------------------------------------------------------------------------------------------------------#
+#https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#code-block-preferences #
+########################################################################################################################
 
 csharp_style_expression_bodied_constructors = when_on_single_line
 csharp_style_expression_bodied_methods = when_on_single_line
@@ -120,10 +201,15 @@ csharp_style_expression_bodied_accessors = when_on_single_line
 csharp_style_expression_bodied_lambdas = when_on_single_line
 csharp_style_expression_bodied_local_functions = true
 
-################################
-# Expression-level preferences #
-################################
+###############################################################################################################################
+# Expression-level preferences                                                                                                #
+#-----------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#expression-level-preferences #
+###############################################################################################################################
 
+############################
+# General .NET style rules #
+############################
 dotnet_style_object_initializer = true
 dotnet_style_collection_initializer = true:suggestion
 dotnet_style_prefer_collection_expression = true:suggestion
@@ -147,19 +233,27 @@ dotnet_style_prefer_simplified_boolean_expressions = true
 dotnet_style_namespace_match_folder = true:suggestion
 dotnet_diagnostic.IDE0130.severity = suggestion
 
+##################
+# C# style rules #
+##################
+
+csharp_style_throw_expression = true
+csharp_style_inlined_variable_declaration = true
+csharp_prefer_simple_default_expression = true
+
 # "this." and "Me." qualifiers
-dotnet_style_qualification_for_field = true:warning
-dotnet_style_qualification_for_property = true:warning
-dotnet_style_qualification_for_method = true:warning
-dotnet_style_qualification_for_event = true:warning
+dotnet_style_qualification_for_field = true
+dotnet_style_qualification_for_property = true
+dotnet_style_qualification_for_method = true
+dotnet_style_qualification_for_event = true
 # Language keywords instead of framework type names for type references
-dotnet_style_predefined_type_for_locals_parameters_members = true:warning
-dotnet_style_predefined_type_for_member_access = true:warning
+dotnet_style_predefined_type_for_locals_parameters_members = true
+dotnet_style_predefined_type_for_member_access = true
 # Modifier preferences
 dotnet_style_require_accessibility_modifiers = always:warning
 csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:warning
 visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:warning
-dotnet_style_readonly_field = true:warning
+dotnet_style_readonly_field = true
 # Parentheses preferences
 dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
 dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
@@ -171,48 +265,48 @@ dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
 
 
 
-csharp_style_prefer_null_check_over_type_check = true:warning
+csharp_style_prefer_null_check_over_type_check = true
 
 # C# Style Rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#c-style-rules
 [*.{cs,csx,cake}]
 # 'var' preferences
 csharp_style_var_for_built_in_types = false:warning
-csharp_style_var_when_type_is_apparent = true:warning
+csharp_style_var_when_type_is_apparent = true
 csharp_style_var_elsewhere = false:warning
 
-csharp_style_expression_bodied_methods = true:warning
-csharp_style_expression_bodied_constructors = true:warning
-csharp_style_expression_bodied_operators = true:warning
-csharp_style_expression_bodied_properties = true:warning
-csharp_style_expression_bodied_indexers = true:warning
-csharp_style_expression_bodied_accessors = true:warning
-csharp_style_expression_bodied_lambdas = true:warning
-csharp_style_expression_bodied_local_functions = true:warning
+csharp_style_expression_bodied_methods = true
+csharp_style_expression_bodied_constructors = true
+csharp_style_expression_bodied_operators = true
+csharp_style_expression_bodied_properties = true
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_accessors = true
+csharp_style_expression_bodied_lambdas = true
+csharp_style_expression_bodied_local_functions = true
 # Pattern matching preferences
-csharp_style_pattern_matching_over_is_with_cast_check = true:warning
-csharp_style_pattern_matching_over_as_with_null_check = true:warning
-csharp_style_prefer_switch_expression = true:warning
-csharp_style_prefer_pattern_matching = true:warning
-csharp_style_prefer_not_pattern = true:warning
+csharp_style_pattern_matching_over_is_with_cast_check = true
+csharp_style_pattern_matching_over_as_with_null_check = true
+csharp_style_prefer_switch_expression = true
+csharp_style_prefer_pattern_matching = true
+csharp_style_prefer_not_pattern = true
 # Expression-level preferences
-csharp_style_inlined_variable_declaration = true:warning
-csharp_prefer_simple_default_expression = true:warning
-csharp_style_pattern_local_over_anonymous_function = true:warning
-csharp_style_deconstructed_variable_declaration = true:warning
-csharp_style_prefer_index_operator = true:warning
-csharp_style_prefer_range_operator = true:warning
-csharp_style_implicit_object_creation_when_type_is_apparent = true:warning
+
+
+csharp_style_pattern_local_over_anonymous_function = true
+csharp_style_deconstructed_variable_declaration = true
+csharp_style_prefer_index_operator = true
+csharp_style_prefer_range_operator = true
+csharp_style_implicit_object_creation_when_type_is_apparent = true
 # "Null" checking preferences
-csharp_style_throw_expression = true:warning
-csharp_style_conditional_delegate_call = true:warning
+csharp_style_throw_expression = true
+csharp_style_conditional_delegate_call = true
 
 
 
 # Modifier preferences
-csharp_prefer_static_local_function = true:warning
+csharp_prefer_static_local_function = true
 # Null checking preferences
-csharp_style_prefer_null_check_over_type_check = true:warning
+csharp_style_prefer_null_check_over_type_check = true
 # String handling preferences
 dotnet_style_prefer_interpolated_string_for_concatenation = true:suggestion
 

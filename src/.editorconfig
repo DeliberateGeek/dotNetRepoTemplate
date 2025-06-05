@@ -34,7 +34,7 @@ indent_style = tab
 # Visual Studio XML Project Files. 2 Spaces for .NET projects
 # This ensures that the indentation is consistent with the default
 # settings in Visual Studio for .NET projects.
-[*.{csproj,vbproj,vcxproj.filters,proj,projitems,shproj}]
+[*.{csproj,proj,projitems,shproj}]
 indent_size = 2
 
 # XML Configuration Files.
@@ -71,7 +71,7 @@ end_of_line = crlf
 
 # Default Severity for all .NET Code Analysis rules.
 # Any rule that does not have a specific severity set will default to this value.
-[*.{cs,csx,cake,vb,vbx}]
+[*.{cs,csx}]
 dotnet_analyzer_diagnostic.severity = warning
 
 ####################################################################################
@@ -125,8 +125,9 @@ csharp_style_expression_bodied_local_functions = true
 ################################
 
 dotnet_style_object_initializer = true
-dotnet_style_collection_initializer = true
+dotnet_style_collection_initializer = true:suggestion
 dotnet_style_prefer_collection_expression = true:suggestion
+dotnet_diagnostic.IDE0028.severity = suggestion
 dotnet_style_coalesce_expression = true
 dotnet_style_null_propagation = true
 dotnet_style_prefer_auto_properties = true
@@ -224,7 +225,7 @@ csharp_operator_placement_when_wrapping = beginning_of_line
 ##########################################
 
 # .NET Unnecessary code rules
-[*.{cs,csx,cake,vb,vbx}]
+[*.{cs,csx}]
 dotnet_code_quality_unused_parameters = all:warning
 dotnet_remove_unnecessary_suppression_exclusions = none:warning
 
@@ -236,7 +237,7 @@ dotnet_remove_unnecessary_suppression_exclusions = none:warning
 
 # .NET formatting rules
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/formatting-rules#net-formatting-rules
-[*.{cs,csx,cake,vb,vbx}]
+[*.{cs,csx}]
 # Organize using directives
 dotnet_sort_system_directives_first = true
 dotnet_separate_import_directive_groups = false

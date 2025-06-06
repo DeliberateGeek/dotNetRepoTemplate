@@ -1,9 +1,16 @@
-# Version 0.1 (Using https://semver.org/)
-# Updated 2025-06-03
-# See https://editorconfig.org for more information about .editoconfig files.
-# Originally sourced from https://github.com/RehanSaeed/EditorConfig.
-# Modified by Steve Brouillard to fit personal preference and the needs of the projects
-# based on this repository.
+#########################################################################################
+# Version 0.1 (Using https://semver.org/)                                               #
+# Updated 2025-06-06                                                                    #
+#---------------------------------------------------------------------------------------#
+# See https://editorconfig.org for more information about .editoconfig files.           #
+# Originally sourced from https://github.com/RehanSaeed/EditorConfig.                   #
+# Modified by Steve Brouillard to fit personal preference and the needs of the projects #
+# based on this repository.                                                             #
+#########################################################################################
+# There were a number of references to rules that I could not locate in any official    #
+# documentation. I have removed them for now. If documentation can be found for them,   #
+# they can be added back in.                                                            #
+#########################################################################################
 
 ###############################
 # Core .editorconfig settings #

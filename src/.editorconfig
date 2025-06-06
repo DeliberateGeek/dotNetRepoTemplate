@@ -468,24 +468,108 @@ csharp_space_between_square_brackets = false
 csharp_preserve_single_line_statements = false
 csharp_preserve_single_line_blocks = true
 
-# String handling preferences
-dotnet_style_prefer_interpolated_string_for_concatenation = true:suggestion
+############################################################################################################
+# Code-style rules - Naming rules                                                                          #
+#----------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules             #
+############################################################################################################
+# This section was generated using GitHub Copilot and is based on the .NET Code Analysis                   #
+# documentation in the link above correlated against the /docs/development/04-csharp-naming-guidelines.md. #
+# document in this repository. I will update this section as needed to ensure it remains consistent with   #
+# the repository's naming guidelines and the lastest code-analysis documentation.                          #
+############################################################################################################
 
-# Line break preferences
-csharp_operator_placement_when_wrapping = beginning_of_line
+# Interfaces should be PascalCase and start with I
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = warning
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
 
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = *
 
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
+# Type parameters should be PascalCase and start with T
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.severity = warning
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.symbols = type_parameter
+dotnet_naming_rule.type_parameter_should_be_begins_with_t.style = begins_with_t
 
+dotnet_naming_symbols.type_parameter.applicable_kinds = type_parameter
+dotnet_naming_symbols.type_parameter.applicable_accessibilities = *
 
+dotnet_naming_style.begins_with_t.required_prefix = T
+dotnet_naming_style.begins_with_t.capitalization = pascal_case
 
-############################################
-# StyleCop Analyzers
-############################################
+# Private/internal fields should be camelCase and start with _
+dotnet_naming_rule.private_or_internal_field_should_be_begins_with_underscore.severity = warning
+dotnet_naming_rule.private_or_internal_field_should_be_begins_with_underscore.symbols = private_or_internal_field
+dotnet_naming_rule.private_or_internal_field_should_be_begins_with_underscore.style = begins_with_underscore
 
-# Exception handling rules
-dotnet_diagnostic.CA1031.severity = warning  # Do not catch general exception types
-dotnet_diagnostic.CA2200.severity = warning  # Rethrow to preserve stack details
-dotnet_diagnostic.CA2201.severity = warning  # Do not raise reserved exception types
-dotnet_diagnostic.CA2208.severity = warning  # Instantiate argument exceptions correctly
+dotnet_naming_symbols.private_or_internal_field.applicable_kinds = field
+dotnet_naming_symbols.private_or_internal_field.applicable_accessibilities = internal, private, private_protected
 
+dotnet_naming_style.begins_with_underscore.required_prefix = _
+dotnet_naming_style.begins_with_underscore.capitalization = camel_case
+
+# Record primary constructor parameters should be PascalCase
+dotnet_naming_rule.record_parameter_should_be_pascal_case.severity = warning
+dotnet_naming_rule.record_parameter_should_be_pascal_case.symbols = record_parameter
+dotnet_naming_rule.record_parameter_should_be_pascal_case.style = pascal_case_style
+
+dotnet_naming_symbols.record_parameter.applicable_kinds = parameter
+dotnet_naming_symbols.record_parameter.applicable_accessibilities = *
+dotnet_naming_symbols.record_parameter.required_modifiers = record
+
+# Class/struct primary constructor parameters should be camelCase
+dotnet_naming_rule.primary_constructor_parameter_should_be_camel_case.severity = warning
+dotnet_naming_rule.primary_constructor_parameter_should_be_camel_case.symbols = primary_constructor_parameter
+dotnet_naming_rule.primary_constructor_parameter_should_be_camel_case.style = camel_case_style
+
+dotnet_naming_symbols.primary_constructor_parameter.applicable_kinds = parameter
+dotnet_naming_symbols.primary_constructor_parameter.applicable_accessibilities = *
+dotnet_naming_symbols.primary_constructor_parameter.required_modifiers = primary_constructor
+
+# Constants should be ALL_CAPS and separated by underscores
+dotnet_naming_rule.constant_fields_should_be_all_caps.severity = warning
+dotnet_naming_rule.constant_fields_should_be_all_caps.symbols = constant_fields
+dotnet_naming_rule.constant_fields_should_be_all_caps.style = all_caps_style
+
+dotnet_naming_symbols.constant_fields.applicable_kinds = field, local
+dotnet_naming_symbols.constant_fields.applicable_accessibilities = *
+dotnet_naming_symbols.constant_fields.required_modifiers = const
+
+dotnet_naming_style.all_caps_style.word_separator = _
+dotnet_naming_style.all_caps_style.capitalization = all_upper
+
+# Public/protected/protected_internal members should be PascalCase
+dotnet_naming_rule.public_members_should_be_pascal_case.severity = warning
+dotnet_naming_rule.public_members_should_be_pascal_case.symbols = public_members
+dotnet_naming_rule.public_members_should_be_pascal_case.style = pascal_case_style
+
+dotnet_naming_symbols.public_members.applicable_kinds = property,method,field,event,delegate
+dotnet_naming_symbols.public_members.applicable_accessibilities = public,protected,protected_internal
+
+# Parameters and locals should be camelCase
+dotnet_naming_rule.parameters_should_be_camel_case.severity = warning
+dotnet_naming_rule.parameters_should_be_camel_case.symbols = parameters_and_locals
+dotnet_naming_rule.parameters_should_be_camel_case.style = camel_case_style
+
+dotnet_naming_symbols.parameters_and_locals.applicable_kinds = parameter,local
+dotnet_naming_symbols.parameters_and_locals.applicable_accessibilities = *
+dotnet_naming_symbols.parameters_and_locals.required_modifiers =
+
+# Style definitions
+
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+
+######################################################################################
+# Code Quality rules                                                                 #
+#------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ #
+######################################################################################
+# This section is currently empty, as I am beginning with all the default rules.     #
+# I will add rules as needed, based on the impact of the rules on the development    #
+# process and the quality of the code.                                               #
+######################################################################################

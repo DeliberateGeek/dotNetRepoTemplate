@@ -503,7 +503,7 @@ Call static members by using the class name: `ClassName.StaticMember`. This prac
 
 ### Namespace Guidelines
 
-- Prefer block scoped namespace decalarations. While most code files declare a single namespace, this not always the case. More importantly, the block scoped namespace declaration more clearly defines the scope of the namespace and provides better visual separation of namespace and type definitions.
+- Prefer block scoped namespace declarations. While most code files declare a single namespace, this not always the case. More importantly, the block scoped namespace declaration more clearly defines the scope of the namespace and provides better visual separation of namespace and type definitions.
 
   ```csharp
   using System;

@@ -151,6 +151,9 @@ dotnet_analyzer_diagnostic.severity = warning
 # See the link below for the documentation. Look at the navigation pane on the left for      #
 # the categories.                                                                            #
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/           #
+#--------------------------------------------------------------------------------------------#
+# Some of these categories are unintuitive, however, I maintain the same structure as the    #
+# documentation to make it easier to find the rules.                                         #
 ##############################################################################################
 
 #############################################################################################################
@@ -213,9 +216,6 @@ csharp_style_expression_bodied_local_functions = true
 # https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#expression-level-preferences #
 ###############################################################################################################################
 
-############################
-# General .NET style rules #
-############################
 dotnet_style_object_initializer = true
 dotnet_style_collection_initializer = true
 dotnet_style_prefer_collection_expression = true
@@ -237,11 +237,6 @@ dotnet_style_prefer_simplified_interpolation = true
 dotnet_style_prefer_simplified_boolean_expressions = true
 dotnet_style_namespace_match_folder = true:suggestion
 dotnet_diagnostic.IDE0130.severity = suggestion
-
-##################
-# C# style rules #
-##################
-
 csharp_style_throw_expression = true
 csharp_style_inlined_variable_declaration = true
 csharp_prefer_simple_default_expression = true
@@ -265,63 +260,116 @@ csharp_style_prefer_implicitly_typed_lambda_expressions = true
 
 dotnet_style_readonly_field = true
 
-# "this." and "Me." qualifiers
-dotnet_style_qualification_for_field = true
-dotnet_style_qualification_for_property = true
-dotnet_style_qualification_for_method = true
-dotnet_style_qualification_for_event = true
-# Language keywords instead of framework type names for type references
+##################################################################################################################################################
+# Language keyword vs. framework types preferences                                                                                               #
+#------------------------------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#language-keyword-vs-framework-types-preferences #
+##################################################################################################################################################
+
 dotnet_style_predefined_type_for_locals_parameters_members = true
 dotnet_style_predefined_type_for_member_access = true
-# Modifier preferences
-dotnet_style_require_accessibility_modifiers = always:warning
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:warning
-visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:warning
 
-# Parentheses preferences
-dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
-dotnet_style_parentheses_in_other_operators = never_if_unnecessary:warning
+#######################################################################################################################
+# Modifier preferences                                                                                                #
+#---------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#modifier-preferences #
+#######################################################################################################################
 
-# C# Style Rules
-# https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#c-style-rules
-[*.{cs,csx,cake}]
-# 'var' preferences
-csharp_style_var_for_built_in_types = false:warning
-csharp_style_var_when_type_is_apparent = true
-csharp_style_var_elsewhere = false:warning
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async
+dotnet_style_require_accessibility_modifiers = for_non_interface_members
+csharp_prefer_static_local_function = true:suggestion
+dotnet_diagnostic.IDE0062.severity = suggestion
+csharp_style_prefer_readonly_struct = true
+csharp_style_prefer_readonly_struct_member = true
+csharp_prefer_static_anonymous_function = true
 
-csharp_style_expression_bodied_methods = true
-csharp_style_expression_bodied_constructors = true
-csharp_style_expression_bodied_operators = true
-csharp_style_expression_bodied_properties = true
-csharp_style_expression_bodied_indexers = true
-csharp_style_expression_bodied_accessors = true
-csharp_style_expression_bodied_lambdas = true
-csharp_style_expression_bodied_local_functions = true
-# Pattern matching preferences
-csharp_style_pattern_matching_over_is_with_cast_check = true
+#######################################################################################################################
+# New-line preferences                                                                                                #
+#---------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#new-line-preferences #
+#######################################################################################################################
+
+# New-line preferences are all currently experimental - I'll add these when they are stable.
+
+############################################################################################################################
+# Null-checking preferences                                                                                                #
+#--------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#null-checking-preferences #
+############################################################################################################################
+
+csharp_style_conditional_delegate_call = true
+
+########################################################################################################################
+# Parameter preferences                                                                                                #
+#----------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#parameter-preferences #
+########################################################################################################################
+
+dotnet_code_quality_unused_parameters = all
+
+##########################################################################################################################
+# Parentheses preferences                                                                                                #
+#------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#parentheses-preferences #
+##########################################################################################################################
+
+dotnet_style_parentheses_in_arithmetic_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_relational_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+
+###############################################################################################################################
+# Pattern-matching preferences                                                                                                #
+#-----------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#pattern-matching-preferences #
+###############################################################################################################################
+
 csharp_style_pattern_matching_over_as_with_null_check = true
+csharp_style_pattern_matching_over_is_with_cast_check = true
 csharp_style_prefer_switch_expression = true
 csharp_style_prefer_pattern_matching = true
 csharp_style_prefer_not_pattern = true
-# Expression-level preferences
+csharp_style_prefer_extended_property_pattern = true
+
+##########################################################################################################################
+# Suppression preferences                                                                                                #
+#------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#suppression-preferences #
+##########################################################################################################################
+
+dotnet_remove_unnecessary_suppression_exclusions = none
+
+##########################################################################################################################
+# "this." and "me." preferences                                                                                          #
+#------------------------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules#this-and-me-preferences #
+##########################################################################################################################
+
+dotnet_style_qualification_for_field = false
+dotnet_style_qualification_for_property = false
+dotnet_style_qualification_for_method = false
+dotnet_style_qualification_for_event = false
+
+############################################################################################################
+# "var" preferences                                                                                        #
+#----------------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/language-rules#var-preferences #
+############################################################################################################
+
+csharp_style_var_for_built_in_types = false
+csharp_style_var_when_type_is_apparent = true
+csharp_style_var_elsewhere = false
+
+#######################################################################################################
+# Code-style rules - Miscellaneous rules                                                              #
+#-----------------------------------------------------------------------------------------------------#
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/miscellaneous-rules #
+#######################################################################################################
+
+# None of the Miscellaneous rules are currently set to a severity other than the default and the are
+# associated code style options that need to be set.
 
 
-csharp_style_pattern_local_over_anonymous_function = true
-csharp_style_deconstructed_variable_declaration = true
-
-
-
-# "Null" checking preferences
-csharp_style_throw_expression = true
-csharp_style_conditional_delegate_call = true
-
-
-
-# Modifier preferences
-csharp_prefer_static_local_function = true
 
 # String handling preferences
 dotnet_style_prefer_interpolated_string_for_concatenation = true:suggestion
@@ -334,10 +382,6 @@ csharp_operator_placement_when_wrapping = beginning_of_line
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/unnecessary-code-rules
 ##########################################
 
-# .NET Unnecessary code rules
-[*.{cs,csx}]
-dotnet_code_quality_unused_parameters = all:warning
-dotnet_remove_unnecessary_suppression_exclusions = none:warning
 
 
 ##########################################

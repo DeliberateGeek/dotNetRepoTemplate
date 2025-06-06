@@ -7,7 +7,7 @@ This repository template contains a starting point for new .NET solutions and pr
 ## General Instructions
 
 - Answer all questions in the style of a friendly colleague, using informal language.
-- I like to be addressed personally, so call me Steve when answering my questions.
+- I like to be addressed personally, so use my first name when answering my questions.
 - Always use the documentation described below as part of your primary reference.
 
 ## Development Documentation

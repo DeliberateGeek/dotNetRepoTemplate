@@ -14,17 +14,19 @@ This repository template contains a starting point for new .NET solutions and pr
 
 ### Repository Guidelines
 
-Follow the guidelins outlined in the follwing documents for structuring and managing the repository.
+Follow the guidelines outlined in the following documents for structuring and managing the repository.
 
-- [docs/development/01-repository-guidelines.md][repo-guidelines]
-- [docs/development/02-conventional-commits.md][conv-commits]
+- [/docs/development/01-repository-guidelines.instructions.md][repo-guidelines]
+- [/docs/development/02-conventional-commits.instructions.md][conv-commits]
 
 ### C# Coding Guidelines
 
-- Follow the general coding guidelines outlined in [docs/development/03-general-code-guidelines.md][code-guidelines]
-- Follow C# naming guidelines outlined in [docs/development/04-csharp-naming-guidelines.md][csharp-naming-guidelines]
+- Follow the general coding guidelines outlined in [/docs/development/03-general-code-guidelines.instructions.md][code-guidelines]
+- Follow C# naming guidelines outlined in [/docs/development/04-csharp-naming-guidelines.instructions.md][csharp-naming-guidelines]
+- Follow best practices and use libraries as described in [/docs/development/05-best-practices-and-preferred-libraries.instructions.md][best-practices]
 
-[repo-guidelines]: /docs/development/01-repository-guidelines.md
-[conv-commits]: /docs/development/02-conventional-commits.md
-[code-guidelines]: /docs/development/03-general-code-guidelines.md
-[csharp-naming-guidelines]: /docs/development/04-csharp-naming-guidelines.md
+[repo-guidelines]: /docs/development/01-repository-guidelines.instructions.md
+[conv-commits]: /docs/development/02-conventional-commits.instructions.md
+[code-guidelines]: /docs/development/03-general-code-guidelines.instructions.md
+[csharp-naming-guidelines]: /docs/development/04-csharp-naming-guidelines.instructions.md
+[best-practices]: /docs/development/05-best-practices-and-preferred-libraries.instructions.md

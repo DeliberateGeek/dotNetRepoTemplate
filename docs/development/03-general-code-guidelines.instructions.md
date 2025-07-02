@@ -1,3 +1,6 @@
+---
+applyTo: "**"
+---
 # General Code Guidelines
 
 This document describes the coding guidelines to be applied to this project.
@@ -145,8 +148,8 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
   public class LabelledContainer<T>(string label)
   {
       public string Label { get; } = label;
-      public required T Contents 
-      { 
+      public required T Contents
+      {
           get;
           init;
       }
@@ -217,7 +220,7 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
   using System;
   using System.IO;
   using System.Data.SqlClient;
-  
+
   public class DataProcessor
   {
       public string ProcessFile(string filePath)
@@ -257,18 +260,18 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
           }
           // We don't catch IOException or other exceptions - they'll propagate up
       }
-  
+
       private string ProcessContent(string content)
       {
           return content.ToUpper();
       }
-  
+
       private void LogDatabaseFailure(Exception ex)
       {
           // Simulate logging that might fail
           if (DateTime.Now.Second % 2 == 0) // Arbitrary condition to simulate failure
               throw new IOException("Log storage unavailable");
-              
+
           Console.WriteLine($"Logged error: {ex.Message}");
       }
   }
@@ -376,7 +379,7 @@ See [Repository Directory Structure][repo-dir-structure] for overall directory l
 ### Event Handling Guidelines
 
 - Use a lambda expression to define an event handler that you don't need to remove later.
-  
+
   ```csharp
   public Form2()
   {
@@ -399,7 +402,7 @@ Call static members by using the class name: `ClassName.StaticMember`. This prac
   ```csharp
   // Define list to query
   List<int> numbers = [ 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 ];
-  
+
   //LINQ Query Syntax (less desirable syntax)
   IEnumerable<int> filteringQuery =
       from num in numbers

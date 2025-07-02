@@ -1,3 +1,6 @@
+---
+applyTo: "**/*.cs,**/*.csx"
+---
 # C# Naming Guidelines
 
 This document describes the naming guidelines to be used when naming identifiers in C# code used in this project.

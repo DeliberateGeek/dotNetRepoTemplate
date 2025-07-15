@@ -506,17 +506,16 @@ Call static members by using the class name: `ClassName.StaticMember`. This prac
 
 ### Namespace Guidelines
 
-- Prefer block scoped namespace declarations. While most code files declare a single namespace, this not always the case. More importantly, the block scoped namespace declaration more clearly defines the scope of the namespace and provides better visual separation of namespace and type definitions.
+- Prefer file scoped namespace declarations. Most code files declare a single namespace. If an exception must be made, then block scoped namespaces can be used.
 
   ```csharp
   using System;
 
-  namespace MySampleCode
+  namespace MySampleCode;
+
+  public MySampleClass
   {
-      public MySampleClass
-      {
-        // Class definition
-      }
+    // Class definition
   }
   ```
 
@@ -525,15 +524,14 @@ Call static members by using the class name: `ClassName.StaticMember`. This prac
   ```csharp
   using Azure;
 
-  namespace CoolStuff.AwesomeFeature
+  namespace CoolStuff.AwesomeFeature;
+
+  public class Awesome
   {
-      public class Awesome
+      public void Stuff()
       {
-          public void Stuff()
-          {
-              WaitUntil wait = WaitUntil.Completed;
-              // ...
-          }
+          WaitUntil wait = WaitUntil.Completed;
+          // ...
       }
   }
   ```

@@ -190,7 +190,7 @@ dotnet_diagnostic.IDE0073.severity = none
 
 csharp_prefer_braces = true
 csharp_prefer_simple_using_statement = false
-csharp_style_namespace_declarations = block_scoped
+csharp_style_namespace_declarations = file_scoped
 dotnet_diagnostic.IDE0160.severity = suggestion
 dotnet_diagnostic.IDE0161.severity = suggestion
 csharp_style_prefer_method_group_conversion = true
